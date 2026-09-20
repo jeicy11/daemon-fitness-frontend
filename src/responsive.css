@@ -1,0 +1,59 @@
+/* Estilos globales responsive -- Punto 14: funcionar desde móvil */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+/* Fondo oscuro semitransparente detrás del sidebar en móvil */
+.sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+/* Tablas: se desplazan horizontalmente en vez de romper el diseño */
+.tabla-responsive {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.tabla-responsive table {
+  min-width: 600px;
+}
+
+/* ============ Pantallas chicas (celulares y tablets angostas) ============ */
+@media (max-width: 850px) {
+  .boton-hamburguesa {
+    display: inline-block !important;
+  }
+  .boton-cerrar-sidebar {
+    display: inline-block !important;
+  }
+
+  /* El sidebar se convierte en un panel que entra desde la izquierda */
+  .sidebar-daemon {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+  .sidebar-daemon.sidebar-abierto {
+    transform: translateX(0);
+  }
+
+  main {
+    padding: 16px !important;
+  }
+
+  input, select, button, textarea {
+    font-size: 16px; /* evita el zoom automático de iOS al tocar un campo */
+  }
+}

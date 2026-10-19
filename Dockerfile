@@ -1,4 +1,3 @@
-
 # Etapa 1: construir React + Vite
 FROM node:22-alpine AS build
 
@@ -9,9 +8,12 @@ RUN npm ci
 
 COPY . .
 
-# Las peticiones de API pasarán por Nginx
+# Las peticiones de API y reCAPTCHA
 ARG VITE_API_URL=/api
 ENV VITE_API_URL=${VITE_API_URL}
+
+ARG VITE_RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+ENV VITE_RECAPTCHA_SITE_KEY=${VITE_RECAPTCHA_SITE_KEY}
 
 RUN npm run build
 

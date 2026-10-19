@@ -36,7 +36,7 @@ jobs:
           push: true
           build-args: |
             VITE_API_URL=/api
-            VITE_RECAPTCHA_SITE_KEY=${{ secrets.6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI }}
+            VITE_RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
           tags: |
             ghcr.io/jeicy11/inventariotaw-frontend:latest
             ghcr.io/jeicy11/inventariotaw-frontend:${{ github.sha }}

@@ -65,7 +65,7 @@ export default function LoginPage() {
 
         <div style={{ marginBottom: 12 }}>
           <ReCAPTCHA
-            sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+            sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY || '6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI'}
             onChange={(token) => setCaptchaToken(token)}
             onExpired={() => setCaptchaToken(null)}
           />

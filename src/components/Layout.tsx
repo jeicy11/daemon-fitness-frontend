@@ -4,6 +4,8 @@ import { getUsuarioActual, logout } from '../services/auth.service';
 
 export default function Layout() { const navigate = useNavigate(); const usuario = getUsuarioActual(); const [sidebarAbierto, setSidebarAbierto] = useState(false);
 
+// CONFIGURACIÓN DEL MENÚ PRINCIPAL // true = mostrar opción // false = ocultar opción temporalmente const menuHabilitado = { panel: true, equipamiento: true, categorias: true, usuarios: false, creditos: false, };
+
 // ========================================== // CONFIGURACIÓN DEL MENÚ PRINCIPAL // true = mostrar opción // false = ocultar opción temporalmente // ========================================== const menuHabilitado = { panel: true, equipamiento: true, categorias: true, usuarios: false, creditos: false, };
 
 const handleLogout = async () => { await logout(); navigate('/login'); };

@@ -7,6 +7,15 @@ export default function Layout() {
   const usuario = getUsuarioActual();
   const [sidebarAbierto, setSidebarAbierto] = useState(false);
 
+
+  // CONFIGURACIÓN DEL MENÚ
+  const mostrarPanel = true;
+  const mostrarEquipamiento = true;
+  const mostrarCategorias = true;
+  const mostrarUsuarios = false;
+  const mostrarCreditos = false;
+  // CONFIGURACIÓN DEL MENÚ
+  
   const handleLogout = async () => {
     await logout();
     navigate('/login');
@@ -128,33 +137,42 @@ export default function Layout() {
         </div>
 
         <nav>
-          <NavLink to="/" style={linkStyle} end onClick={cerrarSidebar}>
-            <span>📊</span>
-            <span>Panel</span>
-          </NavLink>
+  {mostrarPanel && (
+    <NavLink to="/" style={linkStyle} end onClick={cerrarSidebar}>
+      <span>📊</span>
+      <span>Panel</span>
+    </NavLink>
+  )}
 
-          <NavLink to="/productos" style={linkStyle} onClick={cerrarSidebar}>
-            <span>🏋️</span>
-            <span>Equipamiento</span>
-          </NavLink>
+  {mostrarEquipamiento && (
+    <NavLink to="/productos" style={linkStyle} onClick={cerrarSidebar}>
+      <span>🏋️</span>
+      <span>Equipamiento</span>
+    </NavLink>
+  )}
 
-          <NavLink to="/categorias" style={linkStyle} onClick={cerrarSidebar}>
-            <span>📁</span>
-            <span>Categorías</span>
-          </NavLink>
+  {mostrarCategorias && (
+    <NavLink to="/categorias" style={linkStyle} onClick={cerrarSidebar}>
+      <span>📁</span>
+      <span>Categorías</span>
+    </NavLink>
+  )}
 
-          {usuario?.rol === 'Administrador' && (
-            <NavLink to="/usuarios" style={linkStyle} onClick={cerrarSidebar}>
-              <span>👥</span>
-              <span>Usuarios</span>
-            </NavLink>
-          )}
+  {mostrarUsuarios && usuario?.rol === 'Administrador' && (
+    <NavLink to="/usuarios" style={linkStyle} onClick={cerrarSidebar}>
+      <span>👥</span>
+      <span>Usuarios</span>
+    </NavLink>
+  )}
 
-          <NavLink to="/creditos" style={linkStyle} onClick={cerrarSidebar}>
-            <span>💳</span>
-            <span>Créditos</span>
-          </NavLink>
-        </nav>
+  {mostrarCreditos && (
+    <NavLink to="/creditos" style={linkStyle} onClick={cerrarSidebar}>
+      <span>💳</span>
+      <span>Créditos</span>
+    </NavLink>
+  )}
+</nav>
+        
 
         {/* PARTE INFERIOR */}
         <div style={{ marginTop: 'auto', borderTop: '1px solid #1e293b', paddingTop: 20 }}>

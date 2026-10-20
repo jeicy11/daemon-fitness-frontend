@@ -11,7 +11,7 @@ export default function Layout() {
   // CONFIGURACIÓN DEL MENÚ
   const mostrarPanel = true;
   const mostrarEquipamiento = true;
-  const mostrarCategorias = true;
+  const mostrarCategorias = false;
   const mostrarUsuarios = false;
   const mostrarCreditos = false;
   // CONFIGURACIÓN DEL MENÚ

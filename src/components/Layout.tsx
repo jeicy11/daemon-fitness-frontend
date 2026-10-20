@@ -1,12 +1,8 @@
-import { useState } from 'react'; 
-import { NavLink, Outlet, useNavigate } from 'react-router-dom'; 
-import { getUsuarioActual, logout } from '../services/auth.service';
+import { useState } from 'react'; import { NavLink, Outlet, useNavigate } from 'react-router-dom'; import { getUsuarioActual, logout } from '../services/auth.service';
 
 export default function Layout() { const navigate = useNavigate(); const usuario = getUsuarioActual(); const [sidebarAbierto, setSidebarAbierto] = useState(false);
 
-// CONFIGURACIÓN DEL MENÚ PRINCIPAL // true = mostrar opción // false = ocultar opción temporalmente const menuHabilitado = { panel: true, equipamiento: true, categorias: true, usuarios: false, creditos: false, };
-
-// ========================================== // CONFIGURACIÓN DEL MENÚ PRINCIPAL // true = mostrar opción // false = ocultar opción temporalmente // ========================================== const menuHabilitado = { panel: true, equipamiento: true, categorias: true, usuarios: false, creditos: false, };
+// ======================================== // CONFIGURACIÓN DEL MENÚ // true = habilitado // false = deshabilitado // ======================================== const mostrarPanel = true; const mostrarEquipamiento = true; const mostrarCategorias = true; const mostrarUsuarios = false; const mostrarCreditos = false;
 
 const handleLogout = async () => { await logout(); navigate('/login'); };
 
@@ -138,7 +134,7 @@ return ( <div style={{ minHeight: '100vh', display: 'flex', background: '#0f172a
 
     <nav>
       {/* PANEL */}
-      {menuHabilitado.panel && (
+      {mostrarPanel && (
         <NavLink
           to="/"
           style={linkStyle}
@@ -151,7 +147,7 @@ return ( <div style={{ minHeight: '100vh', display: 'flex', background: '#0f172a
       )}
 
       {/* EQUIPAMIENTO */}
-      {menuHabilitado.equipamiento && (
+      {mostrarEquipamiento && (
         <NavLink
           to="/productos"
           style={linkStyle}
@@ -163,7 +159,7 @@ return ( <div style={{ minHeight: '100vh', display: 'flex', background: '#0f172a
       )}
 
       {/* CATEGORÍAS */}
-      {menuHabilitado.categorias && (
+      {mostrarCategorias && (
         <NavLink
           to="/categorias"
           style={linkStyle}
@@ -174,8 +170,8 @@ return ( <div style={{ minHeight: '100vh', display: 'flex', background: '#0f172a
         </NavLink>
       )}
 
-      {/* USUARIOS: SOLO ADMINISTRADOR */}
-      {menuHabilitado.usuarios &&
+      {/* USUARIOS: SOLO PARA ADMINISTRADOR */}
+      {mostrarUsuarios &&
         usuario?.rol === 'Administrador' && (
           <NavLink
             to="/usuarios"
@@ -188,7 +184,7 @@ return ( <div style={{ minHeight: '100vh', display: 'flex', background: '#0f172a
         )}
 
       {/* CRÉDITOS */}
-      {menuHabilitado.creditos && (
+      {mostrarCreditos && (
         <NavLink
           to="/creditos"
           style={linkStyle}
@@ -208,7 +204,7 @@ return ( <div style={{ minHeight: '100vh', display: 'flex', background: '#0f172a
         paddingTop: 20,
       }}
     >
-      {/* INFORMACIÓN DE SESIÓN */}
+      {/* SESIÓN ACTIVA */}
       <div
         style={{
           background: '#1e293b',
@@ -366,7 +362,7 @@ return ( <div style={{ minHeight: '100vh', display: 'flex', background: '#0f172a
       </div>
     </header>
 
-    {/* CONTENIDO DE CADA PÁGINA */}
+    {/* CONTENIDO DE LA PÁGINA */}
     <main
       style={{
         flex: 1,

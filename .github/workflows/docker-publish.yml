@@ -38,5 +38,5 @@ jobs:
             VITE_API_URL=/api
             VITE_RECAPTCHA_SITE_KEY=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
           tags: |
-            ghcr.io/jeicy11/inventariotaw-frontend:latest
-            ghcr.io/jeicy11/inventariotaw-frontend:${{ github.sha }}
+            ghcr.io/jeicy11/daemonfitness-frontend:latest
+            ghcr.io/jeicy11/daemonfitness-frontend:${{ github.sha }}

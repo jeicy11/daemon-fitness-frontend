@@ -11,9 +11,9 @@ export default function Layout() {
   // CONFIGURACIÓN DEL MENÚ
   const mostrarPanel = true;
   const mostrarEquipamiento = true;
-  const mostrarCategorias = false;
-  const mostrarUsuarios = false;
-  const mostrarCreditos = false;
+  const mostrarCategorias = true;
+  const mostrarUsuarios = true;
+  const mostrarCreditos = true;
   // CONFIGURACIÓN DEL MENÚ
   
   const handleLogout = async () => {
